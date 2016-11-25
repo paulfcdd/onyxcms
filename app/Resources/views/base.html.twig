@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}
+		{% endblock %}
+	</title>
+	<meta name="description" content=" {% block description %}{% endblock %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+	<link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('fa/css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/main.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ asset('img/icon.ico') }}" type="image/x-icon">
+</head>
+<body>
+<div class="container">
+	<div class="header">
+		{% block header %}
+			{{ render(controller('StoreBundle:PageConstructor:header')) }}
+		{% endblock %}
+	</div>
+
+	<div class="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	<div class="footer">
+		{% block footer %}
+			{#{{ render (controller ('StoreBundle:Footer:footer')) }}#}
+		{% endblock %}
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="{{ asset('bundles/bmatznerlodash/js/lodash.min.js') }}"></script>
+<script src="{{ asset('js/jquery.cookie.js') }}"></script>
+<script src="{{ asset('js/dropdown.js') }}"></script>
+<script src="{{ asset('js/store.js') }}"></script>
+<script src="{{ asset('js/cart.js') }}"></script>
+<script src="{{ asset('js/checkout.js') }}"></script>
+<script src="{{ asset('js/curSelector.js') }}"></script>
+<script src="{{ asset('js/changeLang.js') }}"></script>
+<script>
+	$('[data-toggle="tooltip"]').tooltip();
+</script>
 </html>

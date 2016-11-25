@@ -1,0 +1,217 @@
+<div class="row" id="header-top">
+	<nav id="navTop">
+		<div class="container">
+			<div class="pull-left">
+				<ul class="nav navbar-nav navigationTop">
+					<li class="dropdown show-block">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						   aria-expanded="false"><span class="caret"></span></a>
+						<ul class="dropdown-menu js-selector">
+							{% for lang in langs %}
+								{% if lang.isDefault == 1 %}
+								<script>
+									var lang = {{ lang.langId }}
+								</script>
+								{% endif %}
+								<li data-isdefault="{{ lang.isDefault }}"
+									data-langid="{{ lang.langId }}"
+									data-langcode="{{ lang.langCode }}"
+									{#onclick="changeLang('{{ lang.langid }}', '{{ path('change_lang') }}')">#}
+									onclick="changeLang('{{ lang.langid }}')">
+									<a href="#">{{ lang.langName }}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</li>
+					<li class="dropdown show-block">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						   aria-expanded="false" style="padding-left: 0">
+						</a>
+						<ul class="dropdown-menu js-selector">
+							{#{% for currency in currencies %}#}
+
+								{#<li id="{{ currency.currencyId }}" data-code="{{ currency.currencyCode }}"#}
+									{#data-value="{{ currency.value }}"#}
+									{#data-symbolLeft="{{ currency.symbolLeft }}"#}
+									{#data-symbolRight="{{ currency.symbolRight }}"#}
+									{#onclick="changeCurrency(this)">#}
+									{#<a href="#">{{ currency.currencyName }}</a>#}
+								{#</li>#}
+
+							{#{% endfor %}#}
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="pull-right">
+				{#<ul class="navbar-nav nav right-nav navigationTop">#}
+					{#<li class="show-block"><a href="{{ path('contact') }}">#}
+							{#<span class="glyphicon glyphicon-earphone"></span>#}
+							{#<span class="hidden-md hidden-sm hidden-xs">533157163</span>#}
+						{#</a></li>#}
+
+					{#{% if isLogged == 1 %}#}
+						{#<li class="dropdown navigationTop logged-user">#}
+							{#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"#}
+							   {#aria-haspopup="true"#}
+							   {#aria-expanded="false">#}
+								{#<span class="glyphicon glyphicon-user"></span>#}
+								{#<span class="hidden-xs">Hi, {{ title }}</span>#}
+								{#<span class="caret hidden-xs"></span>#}
+							{#</a>#}
+							{#<ul class="dropdown-menu">#}
+								{#<li><a href="{{ path('customer') }}">{{ title }}</a></li>#}
+								{#<li><a href="{{ path('logout') }}">{{ logout }}</a></li>#}
+							{#</ul>#}
+						{#</li>#}
+					{#{% else %}#}
+						{#<li class="show-block">#}
+							{#<a href="{{ path('account') }}">#}
+								{#<span class="glyphicon glyphicon-user"></span>#}
+								{#<span class="hidden-md hidden-sm hidden-xs">#}
+                                {#{{ my_account }}#}
+                            {#</span>#}
+							{#</a>#}
+						{#</li>#}
+					{#{% endif %}#}
+					{#<li class="show-block"><a href="#">#}
+							{#<span class="glyphicon glyphicon-heart"></span>#}
+							{#<span class="hidden-md hidden-sm hidden-xs">{{ wishlist }}</span>#}
+						{#</a></li>#}
+					{#<li class="show-block"><a href="{{ path('delivery') }}">#}
+							{#<span class="fa fa-truck" aria-hidden="true"></span>#}
+							{#<span class="hidden-md hidden-sm hidden-xs">{{ delivery }}</span>#}
+						{#</a></li>#}
+				{#</ul>#}
+			</div>
+
+		</div>
+	</nav>
+</div>
+<div class="row" id="header-middle">
+	<nav id="navMid">
+		<div class="container">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 logo-block">
+				<a href="{{ path('home') }}">
+					<img src="{{ asset('img/logo_new.png') }}">
+				</a>
+			</div>
+			<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 search-form">
+				<div class="input-group">
+					<input type="text" class="form-control"
+						   aria-label="Text input with segmented button dropdown">
+
+					{#<div class="input-group-btn dropdown searchMenu">#}
+						{#<button type="button"#}
+								{#class="btn btn-primary dropdown-toggle category-btn dropdown-btn"#}
+								{#data-toggle="dropdown"#}
+								{#aria-haspopup="true" aria-expanded="false">#}
+							{#{{ all_categories }} &nbsp;<span class="caret"></span> <span#}
+									{#class="sr-only">Toggle Dropdown</span>#}
+						{#</button>#}
+						{#<ul class="dropdown-menu dropdown-menu-right dropdownList js-selector">#}
+							{#<li id="kek"><a href="#">Action</a></li>#}
+							{#<li><a href="#">Another action</a></li>#}
+							{#<li><a href="#">Something else here</a></li>#}
+							{#<li role="separator" class="divider"></li>#}
+							{#<li><a href="#">Separated link</a></li>#}
+						{#</ul>#}
+						{#<button type="button" class="btn btn-primary search-btn">#}
+							{#<span class="glyphicon glyphicon-search"></span>#}
+						{#</button>#}
+					{#</div>#}
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 button-block">
+				{#<a href="{{ path('cart') }}" class="btn btn-primary cart-btn">#}
+					{#<span class="glyphicon glyphicon-shopping-cart"></span>#}
+					{#&nbsp;#}
+					{#<span>{{ cart }}</span>&nbsp;(<span id="cartItems"></span>)#}
+				{#</a>#}
+			{#</div>#}
+		</div>
+	</nav>
+</div>
+<div class="row" id="header-bottom">
+	<nav id="navBot">
+		<div class="container hidden-xs">
+			<ul class="nav navbar-nav main-menu">
+				{#{% for category in categories %}#}
+					{#{% if category.parentId == 0 %}#}
+						{#{% set parent = category.id %}#}
+						{#<li class="menu-item dropdown">#}
+							{#<a class="dropdown-toggle" data-toggle="dropdown" href="#">#}
+								{#{{ category.name }}#}
+								{#<span class="caret"></span>#}
+							{#</a>#}
+							{#<ul class="dropdown-menu">#}
+								{#{% for subCategory in categories %}#}
+									{#{% if subCategory.parentId == parent %}#}
+										{#<li><a href="{{ path('subcategory',#}
+											{#{'category': category.name | lower, 'subcategory' : subCategory.name | lower }) }}">{{ subCategory.name }}</a>#}
+										{#</li>#}
+									{#{% endif %}#}
+								{#{% endfor %}#}
+								{#<li class="divider"></li>#}
+								{#<li>#}
+									{#<a tabindex="-1" href="{{ path('category', {#}
+										{#'category': category.name | lower#}
+									{#}) }}">{{ show_all }}&nbsp;{{ category.name }}</a></li>#}
+								{#</li>#}
+							{#</ul>#}
+						{#</li>#}
+					{#{% endif %}#}
+				{#{% endfor %}#}
+			</ul>
+		</div>
+		<div class="container hidden-md hidden-lg hidden-sm">
+			<div class="pull-left">
+				<ul class="nav navbar-nav">
+					<li>
+						{#<h4 class="category-text">{{ categories_mobile_view }}</h4>#}
+					</li>
+				</ul>
+			</div>
+			<div class="pull-right">
+				<ul class="nav navbar-nav">
+					<li>
+						<button type="button" class="btn btn-primary" data-toggle="collapse" href="#main-menu">
+							<span class="glyphicon glyphicon-align-justify"></span>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="main-menu" class="collapse">
+		<ul class="nav navbar-nav main-menu mobileView">
+			{#{% for category in categories %}#}
+				{#{% if category.parentId == 0 %}#}
+					{#{% set parent = category.id %}#}
+					{#<li class="menu-item dropdown">#}
+						{#<a class="dropdown-toggle" data-toggle="dropdown" href="#">#}
+							{#{{ category.name }}#}
+						{#</a>#}
+						{#<ul class="dropdown-menu">#}
+							{#{% for subCategory in categories %}#}
+								{#{% if subCategory.parentId == parent %}#}
+									{#<li><a href="{{ path('subcategory',#}
+										{#{'category': category.name | lower, 'subcategory' : subCategory.name | lower }) }}">{{ subCategory.name }}</a>#}
+									{#</li>#}
+								{#{% endif %}#}
+							{#{% endfor %}#}
+						{#</ul>#}
+					{#</li>#}
+				{#{% endif %}#}
+			{#{% endfor %}#}
+		</ul>
+	</div>
+	<script>
+		var lang = {{ app.request.cookies.get('lang') }};
+	</script>
+	<script>
+		{#var emptyCart = '{{ empty_cart }}';#}
+	</script>
+	{{ dump(langs) }}
+
+</div>
