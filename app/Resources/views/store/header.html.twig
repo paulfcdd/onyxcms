@@ -28,61 +28,63 @@
 						   aria-expanded="false" style="padding-left: 0">
 						</a>
 						<ul class="dropdown-menu js-selector">
-							{#{% for currency in currencies %}#}
+							{% for currency in currencies %}
 
-								{#<li id="{{ currency.currencyId }}" data-code="{{ currency.currencyCode }}"#}
-									{#data-value="{{ currency.value }}"#}
-									{#data-symbolLeft="{{ currency.symbolLeft }}"#}
-									{#data-symbolRight="{{ currency.symbolRight }}"#}
-									{#onclick="changeCurrency(this)">#}
-									{#<a href="#">{{ currency.currencyName }}</a>#}
-								{#</li>#}
+								<li id="{{ currency.currencyId }}" data-code="{{ currency.currencyCode }}"
+									data-value="{{ currency.value }}"
+									data-symbolLeft="{{ currency.symbolLeft }}"
+									data-symbolRight="{{ currency.symbolRight }}"
+									onclick="changeCurrency(this)">
+									<a href="#">{{ currency.currencyName }}</a>
+								</li>
 
-							{#{% endfor %}#}
+							{% endfor %}
 						</ul>
 					</li>
 				</ul>
 			</div>
 			<div class="pull-right">
-				{#<ul class="navbar-nav nav right-nav navigationTop">#}
-					{#<li class="show-block"><a href="{{ path('contact') }}">#}
-							{#<span class="glyphicon glyphicon-earphone"></span>#}
-							{#<span class="hidden-md hidden-sm hidden-xs">533157163</span>#}
-						{#</a></li>#}
+				<ul class="navbar-nav nav right-nav navigationTop">
 
-					{#{% if isLogged == 1 %}#}
-						{#<li class="dropdown navigationTop logged-user">#}
-							{#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"#}
-							   {#aria-haspopup="true"#}
-							   {#aria-expanded="false">#}
-								{#<span class="glyphicon glyphicon-user"></span>#}
-								{#<span class="hidden-xs">Hi, {{ title }}</span>#}
-								{#<span class="caret hidden-xs"></span>#}
-							{#</a>#}
-							{#<ul class="dropdown-menu">#}
-								{#<li><a href="{{ path('customer') }}">{{ title }}</a></li>#}
-								{#<li><a href="{{ path('logout') }}">{{ logout }}</a></li>#}
-							{#</ul>#}
-						{#</li>#}
-					{#{% else %}#}
-						{#<li class="show-block">#}
-							{#<a href="{{ path('account') }}">#}
-								{#<span class="glyphicon glyphicon-user"></span>#}
-								{#<span class="hidden-md hidden-sm hidden-xs">#}
-                                {#{{ my_account }}#}
-                            {#</span>#}
-							{#</a>#}
-						{#</li>#}
-					{#{% endif %}#}
-					{#<li class="show-block"><a href="#">#}
-							{#<span class="glyphicon glyphicon-heart"></span>#}
-							{#<span class="hidden-md hidden-sm hidden-xs">{{ wishlist }}</span>#}
-						{#</a></li>#}
-					{#<li class="show-block"><a href="{{ path('delivery') }}">#}
-							{#<span class="fa fa-truck" aria-hidden="true"></span>#}
-							{#<span class="hidden-md hidden-sm hidden-xs">{{ delivery }}</span>#}
-						{#</a></li>#}
-				{#</ul>#}
+					<li class="show-block"><a href="{{ path('contact') }}">
+							<span class="glyphicon glyphicon-earphone"></span>
+							<span class="hidden-md hidden-sm hidden-xs">533157163</span>
+						</a>
+					</li>
+
+					{% if isLogged == 1 %}
+						<li class="dropdown navigationTop logged-user">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+							   aria-haspopup="true"
+							   aria-expanded="false">
+								<span class="glyphicon glyphicon-user"></span>
+								<span class="hidden-xs">Hi, {{ title }}</span>
+								<span class="caret hidden-xs"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ path('customer') }}">{{ title }}</a></li>
+								<li><a href="{{ path('logout') }}">{{ logout }}</a></li>
+							</ul>
+						</li>
+					{% else %}
+						<li class="show-block">
+							<a href="{{ path('account') }}">
+								<span class="glyphicon glyphicon-user"></span>
+								<span class="hidden-md hidden-sm hidden-xs">
+                                {{ my_account }}
+                            </span>
+							</a>
+						</li>
+					{% endif %}
+					<li class="show-block"><a href="#">
+							<span class="glyphicon glyphicon-heart"></span>
+							<span class="hidden-md hidden-sm hidden-xs">{{ wishlist }}</span>
+						</a></li>
+					<li class="show-block"><a href="{{ path('delivery') }}">
+							<span class="fa fa-truck" aria-hidden="true"></span>
+							<span class="hidden-md hidden-sm hidden-xs">{{ delivery }}</span>
+						</a></li>
+				</ul>
 			</div>
 
 		</div>
@@ -97,30 +99,44 @@
 				</a>
 			</div>
 			<div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 search-form">
-				<div class="input-group">
-					<input type="text" class="form-control"
-						   aria-label="Text input with segmented button dropdown">
+				{#<form method="post" action="{{ path('search') }}">#}
+				{#<form method="post" action="">#}
+					{#<div class="input-group">#}
+						{#<input type="text" class="form-control"#}
+							   {#aria-label="Text input with segmented button dropdown" name="product_name">#}
 
-					{#<div class="input-group-btn dropdown searchMenu">#}
-						{#<button type="button"#}
-								{#class="btn btn-primary dropdown-toggle category-btn dropdown-btn"#}
-								{#data-toggle="dropdown"#}
-								{#aria-haspopup="true" aria-expanded="false">#}
-							{#{{ all_categories }} &nbsp;<span class="caret"></span> <span#}
-									{#class="sr-only">Toggle Dropdown</span>#}
-						{#</button>#}
-						{#<ul class="dropdown-menu dropdown-menu-right dropdownList js-selector">#}
-							{#<li id="kek"><a href="#">Action</a></li>#}
-							{#<li><a href="#">Another action</a></li>#}
-							{#<li><a href="#">Something else here</a></li>#}
-							{#<li role="separator" class="divider"></li>#}
-							{#<li><a href="#">Separated link</a></li>#}
-						{#</ul>#}
-						{#<button type="button" class="btn btn-primary search-btn">#}
-							{#<span class="glyphicon glyphicon-search"></span>#}
-						{#</button>#}
+						{#<div class="input-group-btn dropdown searchMenu">#}
+							{#<button type="button"#}
+									{#class="btn btn-primary dropdown-toggle category-btn dropdown-btn"#}
+									{#data-toggle="dropdown"#}
+									{#aria-haspopup="true" aria-expanded="false">#}
+								{#{{ all_categories }} &nbsp;<span class="caret"></span> <span#}
+										{#class="sr-only">Toggle Dropdown</span>#}
+							{#</button>#}
+							{#<ul class="dropdown-menu dropdown-menu-right dropdownList js-selector">#}
+								{#{% for category in categories %}#}
+									{#{% if category.parentId == 0 %}#}
+										{#<li id="{{ category.id }}" data-parentid="{{ category.parentId }}"><a#}
+													{#href="#">{{ category.name }}</a></li>#}
+										{#{% set parentCat = category.id %}#}
+										{#<ul>#}
+											{#{% for subCategory in categories %}#}
+												{#{% if subCategory.parentId == parentCat %}#}
+													{#<li id="{{ subCategory.id }}"#}
+														{#data-parentid="{{ subCategory.parentId }}"><a#}
+																{#href="#">{{ subCategory.name }}</a></li>#}
+												{#{% endif %}#}
+											{#{% endfor %}#}
+										{#</ul>#}
+									{#{% endif %}#}
+								{#{% endfor %}#}
+							{#</ul>#}
+							{#<button type="submit" class="btn btn-primary search-btn">#}
+								{#<span class="glyphicon glyphicon-search"></span>#}
+							{#</button>#}
+						{#</div>#}
 					{#</div>#}
-				</div>
+				{#</form>#}
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 button-block">
 				{#<a href="{{ path('cart') }}" class="btn btn-primary cart-btn">#}
@@ -212,6 +228,6 @@
 	<script>
 		{#var emptyCart = '{{ empty_cart }}';#}
 	</script>
-	{{ dump(langs) }}
+	{{ dump(currencies) }}
 
 </div>

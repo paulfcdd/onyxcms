@@ -1,3 +1,7 @@
 home:
     path:     /
     defaults: { _controller: StoreBundle:Index:index }
+
+contact:
+    path: /contact
+    defaults: { _controller: StoreBundle:Contact:render }

@@ -1,7 +1,6 @@
 <?php
 namespace StoreBundle\Controller;
 
-use ClassesWithParents\E;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -52,7 +51,28 @@ class BaseController extends Controller
 	 * @return array
 	 */
 	public function getAllData(string $repository) {
-		return parent::getDoctrine()->getRepository('StoreBundle:'.$repository)->findAll();
+		return $this->getDoctrine()->getRepository('StoreBundle:'.$repository)->findAll();
+	}
+
+	/**
+	 * @param string $repository
+	 * @param string $parameterName
+	 * @param $parameterValue
+	 * @return object
+	 */
+	public function getDataByParameter(string $repository, string $parameterName, $parameterValue){
+		return $this->getDoctrine()->getRepository('StoreBundle:'.$repository)
+			->findOneBy([$parameterName => $parameterValue]);
+	}
+
+	/**
+	 * @param string $currentLang
+	 * @param string $tplName
+	 * @return string
+	 */
+	public function getTranslation(string $currentLang,string $tplName){
+		$directory = self::getDataByParameter('Lang', 'langCode', $currentLang)->getDirectory();
+		return __DIR__ . "/../Resources/langs/".$directory."/$tplName.php";
 	}
 
 	/**

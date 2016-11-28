@@ -1,0 +1,23 @@
+<?php
+return array(
+    'footer'=>'This is footer',
+    'information' => 'Информация',
+    'about_us' => 'О нас',
+    'delivery_info' => 'Информация о доставке',
+    'privacy_policy' => 'Политика конфиденциальности',
+    'terms_conditions' => 'Правила и условия',
+    'customer_service' => 'Служба поддержки',
+    'contact_us' => 'Свяжитесь с нами',
+    'returns' => 'Возвраты',
+    'sitemap' => 'Карта сайта',
+    'extras' => 'Дополнительная информация',
+    'brands' => 'Бренды',
+    'gift_vouchers' => 'Подарочные сертификаты',
+    'affiliates' => 'Партнёрская программа',
+    'specials' => 'Специальные предложения',
+    'my_account' => 'Мой аккаунт',
+    'order_history' => 'История заказов',
+    'wishlist' => 'Избранное',
+    'newsletter' => 'Рассылка',
+    'powered_by' => 'Разработано в',
+);

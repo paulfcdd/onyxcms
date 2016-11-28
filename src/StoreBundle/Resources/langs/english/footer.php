@@ -1,0 +1,23 @@
+<?php
+return array(
+    'footer'=>'This is footer',
+    'information' => 'Information',
+    'about_us' => 'About us',
+    'delivery_info' => 'Delivery information',
+    'privacy_policy' => 'Privacy policy',
+    'terms_conditions' => 'Terms & Conditions',
+    'customer_service' => 'Customer service',
+    'contact_us' => 'Contact us',
+    'returns' => 'Returns',
+    'sitemap' => 'Sitemap',
+    'extras' => 'Extras',
+    'brands' => 'Brands',
+    'gift_vouchers' => 'Gift vouchers',
+    'affiliates' => 'Affiliates',
+    'specials' => 'Specials',
+    'my_account' => 'My account',
+    'order_history' => 'Order history',
+    'wishlist' => 'Wishlist',
+    'newsletter' => 'Newsletter',
+    'powered_by' => 'Powered by',
+);
