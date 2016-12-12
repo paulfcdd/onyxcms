@@ -68,22 +68,23 @@
 						</li>
 					{% else %}
 						<li class="show-block">
-							<a href="{{ path('account') }}">
-								<span class="glyphicon glyphicon-user"></span>
-								<span class="hidden-md hidden-sm hidden-xs">
-                                {{ my_account }}
-                            </span>
-							</a>
+							{#<a href="{{ path('account') }}">#}
+								{#<span class="glyphicon glyphicon-user"></span>#}
+								{#<span class="hidden-md hidden-sm hidden-xs">#}
+                                {#{{ my_account }}#}
+                            {#</span>#}
+							{#</a>#}
 						</li>
 					{% endif %}
 					<li class="show-block"><a href="#">
 							<span class="glyphicon glyphicon-heart"></span>
 							<span class="hidden-md hidden-sm hidden-xs">{{ wishlist }}</span>
 						</a></li>
-					<li class="show-block"><a href="{{ path('delivery') }}">
-							<span class="fa fa-truck" aria-hidden="true"></span>
-							<span class="hidden-md hidden-sm hidden-xs">{{ delivery }}</span>
-						</a></li>
+					{#<li class="show-block"><a href="{{ path('delivery') }}">#}
+							{#<span class="fa fa-truck" aria-hidden="true"></span>#}
+							{#<span class="hidden-md hidden-sm hidden-xs">{{ delivery }}</span>#}
+						{#</a>
+						</li>#}
 				</ul>
 			</div>
 

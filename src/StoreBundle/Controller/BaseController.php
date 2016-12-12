@@ -71,7 +71,12 @@ class BaseController extends Controller
 	 * @return string
 	 */
 	public function getTranslation(string $currentLang,string $tplName){
-		$directory = self::getDataByParameter('Lang', 'langCode', $currentLang)->getDirectory();
+		$data = $this->getDataByParameter('Lang', 'langCode', $currentLang);
+		if (is_null($data)) {
+		    $directory = $this->getDataByParameter('Lang', 'isDefault', 1)->getDirectory();
+        } else{
+		    $directory = $data->getDirectory();
+        }
 		return __DIR__ . "/../Resources/langs/".$directory."/$tplName.php";
 	}
 

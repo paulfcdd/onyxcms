@@ -14,6 +14,6 @@ return array (
     'isLogged' => $isLogged,
     'title' => $customerName,
     'categories' => $categories,
-    'currencies' => $this->findAllFromRepository('currency'),
-    'langs' => $this->findAllFromRepository('lang'),
+    'currencies' => $this->getAllData('Currency'),
+    'langs' => $this->getAllData('Lang'),
 );
