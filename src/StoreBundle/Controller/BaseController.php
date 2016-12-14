@@ -16,15 +16,15 @@ trait SetSession {
 	/**
 	 * @param string $value
 	 */
-	public function setLang(string $value){
-		return self::session()->set('lang', $value);
+	protected function setLang(string $value){
+		return $this->session()->set('lang', $value);
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getLang(){
-		return self::session()->get('lang');
+	protected function getLang(){
+		return $this->session()->get('lang');
 	}
 }
 
@@ -37,12 +37,12 @@ class BaseController extends Controller
 	/**
 	 * @return mixed
 	 */
-	public function checkLang(){
+    protected function checkLang(){
 		$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 		if ($this->getLang() == null) {
-			return self::setLang($lang);
+			return $this->setLang($lang);
 		} else {
-			return self::getLang();
+			return $this->getLang();
 		}
 	}
 
@@ -50,7 +50,7 @@ class BaseController extends Controller
 	 * @param string $repository
 	 * @return array
 	 */
-	public function getAllData(string $repository) {
+    protected function getAllData(string $repository) {
 		return $this->getDoctrine()->getRepository('StoreBundle:'.$repository)->findAll();
 	}
 
@@ -60,7 +60,7 @@ class BaseController extends Controller
 	 * @param $parameterValue
 	 * @return object
 	 */
-	public function getDataByParameter(string $repository, string $parameterName, $parameterValue){
+    protected function getDataByParameter(string $repository, string $parameterName, $parameterValue){
 		return $this->getDoctrine()->getRepository('StoreBundle:'.$repository)
 			->findOneBy([$parameterName => $parameterValue]);
 	}
@@ -70,9 +70,10 @@ class BaseController extends Controller
 	 * @param string $tplName
 	 * @return string
 	 */
-	public function getTranslation(string $currentLang,string $tplName){
+    protected function getTranslation(string $currentLang,string $tplName){
 		$data = $this->getDataByParameter('Lang', 'langCode', $currentLang);
-		if (is_null($data)) {
+        var_dump($currentLang);
+        if (is_null($data)) {
 		    $directory = $this->getDataByParameter('Lang', 'isDefault', 1)->getDirectory();
         } else{
 		    $directory = $data->getDirectory();
@@ -85,8 +86,8 @@ class BaseController extends Controller
 	 * @param array $parameters
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function renderPage(string $view, array $parameters){
-		self::checkLang();
+	protected function renderPage(string $view, array $parameters){
+		$this->checkLang();
 		return $this->render($view, $parameters);
 	}
 

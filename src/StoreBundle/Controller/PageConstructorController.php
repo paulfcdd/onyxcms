@@ -17,7 +17,7 @@ class PageConstructorController extends BaseController
 		$categories = parent::getAllData('Category');
 
 		return parent::renderPage('store/header.html.twig', 
-			include_once parent::getTranslation(parent::checkLang(), 'header'));
+			include_once $this->getTranslation($this->checkLang(), 'header'));
 	}
 
 	public function footerAction()
